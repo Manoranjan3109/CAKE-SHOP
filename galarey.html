@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .gallery {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .gallery-h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .gallery-img {
+            width: 300px;
+            height: 300px;
+            margin: 5px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery img:nth-child(4n) {
+            margin-right: 0; /* Remove margin on every fourth image for proper alignment */
+        }
+
+        .gallery button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .gallery button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery-img {
+                width: calc(33.33% - 10px); /* Three images per row */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-img {
+                width: calc(50% - 10px); /* Two images per row */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <h2 class="gallery-h2">Gallery</h2>
+        
+        <!-- Car Cakes -->
+        <img src="./projectimg/carcake1.jpg" alt="Car Cake 1" class="gallery-img">
+        <img src="./projectimg/carcake2.jpg" alt="Car Cake 2" class="gallery-img">
+        <img src="./projectimg/carcake3.jpg" alt="Car Cake 3" class="gallery-img">
+        <img src="./projectimg/carcake14.jpg" alt="Car Cake 14" class="gallery-img">
+        <img src="./projectimg/carcake5.jpg" alt="Car Cake 5" class="gallery-img">
+        <img src="./projectimg/carcake16.jpg" alt="Car Cake 16" class="gallery-img">
+        <img src="./projectimg/carcake7.jpg" alt="Car Cake 7" class="gallery-img">
+        <img src="./projectimg/carcake8.jpg" alt="Car Cake 8" class="gallery-img">
+        <img src="./projectimg/carcake9.jpg" alt="Car Cake 9" class="gallery-img">
+        <img src="./projectimg/carcake10.jpg" alt="Car Cake 10" class="gallery-img">
+        <img src="./projectimg/carcake11.jpg" alt="Car Cake 11" class="gallery-img">
+        <img src="./projectimg/carcake12.jpg" alt="Car Cake 12" class="gallery-img">
+        <img src="./projectimg/carcake13.jpg" alt="Car Cake 13" class="gallery-img">
+        <img src="./projectimg/carcake15.jpg" alt="Car Cake 15" class="gallery-img">
+        <img src="./projectimg/carcake17.jpg" alt="Car Cake 17" class="gallery-img">
+        <img src="./projectimg/carcake18.jpg" alt="Car Cake 18" class="gallery-img">
+
+        <!-- Face Cakes -->
+        <img src="./projectimg/facecake1.jpg" alt="Face Cake 1" class="gallery-img">
+        <img src="./projectimg/facecake2.jpg" alt="Face Cake 2" class="gallery-img">
+        <img src="./projectimg/facecake3.jpg" alt="Face Cake 3" class="gallery-img">
+        <img src="./projectimg/facecake4.jpg" alt="Face Cake 4" class="gallery-img">
+        <img src="./projectimg/facecake5.jpg" alt="Face Cake 5" class="gallery-img">
+        <img src="./projectimg/facecake6.jpg" alt="Face Cake 6" class="gallery-img">
+        <img src="./projectimg/facecake7.jpg" alt="Face Cake 7" class="gallery-img">
+        <img src="./projectimg/facecake8.jpg" alt="Face Cake 8" class="gallery-img">
+        <img src="./projectimg/facecake9.jpg" alt="Face Cake 9" class="gallery-img">
+        <img src="./projectimg/facecake10.jpg" alt="Face Cake 10" class="gallery-img">
+        <img src="./projectimg/facecake11.jpg" alt="Face Cake 11" class="gallery-img">
+        <img src="./projectimg/facecake12.jpg" alt="Face Cake 12" class="gallery-img">
+        <img src="./projectimg/facecake13.jpg" alt="Face Cake 13" class="gallery-img">
+        <img src="./projectimg/facecake14.jpg" alt="Face Cake 14" class="gallery-img">
+        <img src="./projectimg/facecake15.jpg" alt="Face Cake 15" class="gallery-img">
+        <img src="./projectimg/facecake16.jpg" alt="Face Cake 16" class="gallery-img">
+        <img src="./projectimg/facecake17.jpg" alt="Face Cake 17" class="gallery-img">
+        <img src="./projectimg/facecake18.jpg" alt="Face Cake 18" class="gallery-img">
+        <img src="./projectimg/facecake19.jpg" alt="Face Cake 19" class="gallery-img">
+        <img src="./projectimg/facecake21.jpg" alt="Face Cake 21" class="gallery-img">
+        <img src="./projectimg/facecake22.jpg" alt="Face Cake 22" class="gallery-img">
+        <img src="./projectimg/facecake23.jpg" alt="Face Cake 23" class="gallery-img">
+        <img src="./projectimg/facecake24.jpg" alt="Face Cake 24" class="gallery-img">
+        <img src="./projectimg/facecake25.jpg" alt="Face Cake 25" class="gallery-img">
+        
+        <!-- Design Cakes -->
+        <img src="./projectimg/desingcake1.jpg" alt="Design Cake 1" class="gallery-img">
+        <img src="./projectimg/desingcake2.jpg" alt="Design Cake 2" class="gallery-img">
+        <img src="./projectimg/desingcake3.jpg" alt="Design Cake 3" class="gallery-img">
+        <img src="./projectimg/desingcake4.jpg" alt="Design Cake 4" class="gallery-img">
+        <img src="./projectimg/desingcake5.jpg" alt="Design Cake 5" class="gallery-img">
+        <img src="./projectimg/desingcake6.jpg" alt="Design Cake 6" class="gallery-img">
+        <img src="./projectimg/desingcake7.jpg" alt="Design Cake 7" class="gallery-img">
+        <img src="./projectimg/desingcake8.jpg" alt="Design Cake 8" class="gallery-img">
+        <img src="./projectimg/desingcake9.jpg" alt="Design Cake 9" class="gallery-img">
+        <img src="./projectimg/desingcake10.jpg" alt="Design Cake 10" class="gallery-img">
+        <img src="./projectimg/desingcake11.jpg" alt="Design Cake 11" class="gallery-img">
+        <img src="./projectimg/desingcake12.jpg" alt="Design Cake 12" class="gallery-img">
+        <img src="./projectimg/desingcake13.jpg" alt="Design Cake 13" class="gallery-img">
+        <img src="./projectimg/desingcake14.jpg" alt="Design Cake 14" class="gallery-img">
+        <img src="./projectimg/desingcake15.jpg" alt="Design Cake 15" class="gallery-img">
+        <img src="./projectimg/desingcake16.jpg" alt="Design Cake 16" class="gallery-img">
+        <img src="./projectimg/desingcake17.jpg" alt="Design Cake 17" class="gallery-img">
+        <img src="./projectimg/desingcake18.jpg" alt="Design Cake 18" class="gallery-img">
+        <img src="./projectimg/desingcake19.jpg" alt="Design Cake 19" class="gallery-img">
+        <img src="./projectimg/desingcake20.jpg" alt="Design Cake 20" class="gallery-img">
+        <img src="./projectimg/desingcake21.jpg" alt="Design Cake 21" class="gallery-img">
+        <img src="./projectimg/desingcake22.jpg" alt="Design Cake 22" class="gallery-img">
+        <img src="./projectimg/desingcake23.jpg" alt="Design Cake 23" class="gallery-img">
+        <img src="./projectimg/desingcake24.jpg" alt="Design Cake 24" class="gallery-img">
+        <img src="./projectimg/desingcake25.jpg" alt="Design Cake 25" class="gallery-img">
+
+        <!-- Step Cakes -->
+        <img src="./projectimg/stepcake1.jpg" alt="Step Cake 1" class="gallery-img">
+        <img src="./projectimg/stepcake2.jpg" alt="Step Cake 2" class="gallery-img">
+        <img src="./projectimg/stepcake3.jpg" alt="Step Cake 3" class="gallery-img">
+        <img src="./projectimg/stepcake4.jpg" alt="Step Cake 4" class="gallery-img">
+        <img src="./projectimg/stepcake5.jpg" alt="Step Cake 5" class="gallery-img">
+        <img src="./projectimg/stepcake6.jpg" alt="Step Cake 6" class="gallery-img">
+        <img src="./projectimg/stepcake7.jpg" alt="Step Cake 7" class="gallery-img">
+        <img src="./projectimg/stepcake8.jpg" alt="Step Cake 8" class="gallery-img">
+        <img src="./projectimg/stepcake9.jpg" alt="Step Cake 9" class="gallery-img">
+        <img src="./projectimg/stepcake10.jpg" alt="Step Cake 10" class="gallery-img">
+        <img src="./projectimg/stepcake11.jpg" alt="Step Cake 11" class="gallery-img">
+        <img src="./projectimg/stepcake12.jpg" alt="Step Cake 12" class="gallery-img">
+        <img src="./projectimg/stepcake13.jpg" alt="Step Cake 13" class="gallery-img">
+        <img src="./projectimg/stepcake14.jpg" alt="Step Cake 14" class="gallery-img">
+        <img src="./projectimg/stepcake15.jpg" alt="Step Cake 15" class="gallery-img">
+        <img src="./projectimg/stepcake16.jpg" alt="Step Cake 16" class="gallery-img">
+        <img src="./projectimg/stepcake17.jpg" alt="Step Cake 17" class="gallery-img">
+        <img src="./projectimg/stepcake18.jpg" alt="Step Cake 18" class="gallery-img">
+        <img src="./projectimg/stepcake19.jpg" alt="Step Cake 19" class="gallery-img">
+        <img src="./projectimg/stepcake20.jpg" alt="Step Cake 20" class="gallery-img">
+        <img src="./projectimg/stepcake21.jpg" alt="Step Cake 21" class="gallery-img">
+        <img src="./projectimg/stepcake22.jpg" alt="Step Cake 22" class="gallery-img">
+       
+       
+        
+      
+    </div>
+</body>
+</html>
