@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        .quantity-btn {
+            background-color: #f3f5f7;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 3px;
+        }
+        .quantity-btn:hover {
+            background-color: #d6e4f1;
+        }
+        .remove-btn {
+            background-color: #f7f1f0;
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 3px;
+            cursor: pointer;
+            color: white;
+            border: none;
+        }
+        .remove-btn:hover {
+            background-color: #fcf7f5;
+        }
+        .checkout-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .total-price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Shopping Cart</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+    </table>
+    <div class="total-price" id="total-price">Total: $0</div>
+    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartTable = document.getElementById("cart-items");
+            cartTable.innerHTML = "";
+
+            let totalPrice = 0; // Initialize total price
+
+            cart.forEach((item, index) => {
+                let row = document.createElement("tr");
+                let itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal; // Add item total to overall total
+
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>$${item.price}</td>
+                    <td>
+                        <button class="quantity-btn" onclick="changeQuantity(${index}, -1)">➖</button>
+                        ${item.quantity}
+                        <button class="quantity-btn" onclick="changeQuantity(${index}, 1)">➕</button>
+                    </td>
+                    <td>$${itemTotal}</td>
+                    <td><button class="remove-btn" onclick="removeItem(${index})">❌</button></td>
+                `;
+                cartTable.appendChild(row);
+            });
+
+            // Update the total price display
+            document.getElementById("total-price").innerText = `Total: $${totalPrice}`;
+        }
+
+        function changeQuantity(index, change) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (cart[index]) {
+                cart[index].quantity += change;
+                if (cart[index].quantity < 0) {
+                    cart[index].quantity = 0; // Prevents quantity from going below 1
+                }
+                localStorage.setItem("cart", JSON.stringify(cart));
+                loadCart();
+            }
+        }
+
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem("cart"));
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart();
+        }
+
+        function checkout() {
+            alert("Proceeding to checkout...");
+        }
+
+        loadCart();
+    </script>
+</body>
+</html>
