@@ -74,7 +74,7 @@
             font-weight: bold;
         }
 
-        .buy-now-btn {
+        .add-to-cart-btn {
             background-color: #ff85a2;
             color: white;
             padding: 10px 20px;
@@ -84,8 +84,25 @@
             cursor: pointer;
         }
 
-        .buy-now-btn:hover {
+        .add-to-cart-btn:hover {
             background-color: #ff5f7a;
+        }
+
+        .view-cart-btn {
+            display: block;
+            background-color: #ff5f7a;
+            color: white;
+            padding: 12px 20px;
+            font-size: 1.2em;
+            margin: 20px auto;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            width: 200px;
+        }
+
+        .view-cart-btn:hover {
+            background-color: #ff85a2;
         }
     </style>
 </head>
@@ -101,61 +118,72 @@
                     <div class="cake-item">
                         <span>Chocolate Truffle (1/2kg)</span>
                         <span class="price" id="choco-truffle-1-2kg" data-price="420">$420</span>
-                        <button class="buy-now-btn" onclick="buyNow('Chocolate Truffle (1/2kg)', 420)">Buy Now</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('Chocolate Truffle (1/2kg)', 420)">Add to Cart</button>
                     </div>
                     <div class="cake-item">
                         <span>Chocolate Truffle (1kg)</span>
                         <span class="price" id="choco-truffle-1kg" data-price="840">$840</span>
-                        <button class="buy-now-btn" onclick="buyNow('Chocolate Truffle (1kg)', 840)">Buy Now</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('Chocolate Truffle (1kg)', 840)">Add to Cart</button>
                     </div>
 
                     <div class="cake-item">
                         <span>Vanilla Delight (1/2kg)</span>
                         <span class="price" id="vanilla-delight-1-2kg" data-price="330">$330</span>
-                        <button class="buy-now-btn" onclick="buyNow('Vanilla Delight (1/2kg)', 330)">Buy Now</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('Vanilla Delight (1/2kg)', 330)">Add to Cart</button>
                     </div>
                     <div class="cake-item">
                         <span>Vanilla Delight (1kg)</span>
                         <span class="price" id="vanilla-delight-1kg" data-price="730">$730</span>
-                        <button class="buy-now-btn" onclick="buyNow('Vanilla Delight (1kg)', 730)">Buy Now</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('Vanilla Delight (1kg)', 730)">Add to Cart</button>
                     </div>
 
                     <div class="cake-item">
                         <span>Red Velvet (1/2kg)</span>
                         <span class="price" id="red-velvet-1-2kg" data-price="550">$550</span>
-                        <button class="buy-now-btn" onclick="buyNow('Red Velvet (1/2kg)', 550)">Buy Now</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('Red Velvet (1/2kg)', 550)">Add to Cart</button>
                     </div>
                     <div class="cake-item">
                         <span>Red Velvet (1kg)</span>
                         <span class="price" id="red-velvet-1kg" data-price="1100">$1100</span>
-                        <button class="buy-now-btn" onclick="buyNow('Red Velvet (1kg)', 1100)">Buy Now</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('Red Velvet (1kg)', 1100)">Add to Cart</button>
                     </div>
 
                     <div class="cake-item">
                         <span>Strawberry Bliss (1/2kg)</span>
                         <span class="price" id="strawberry-bliss-1-2kg" data-price="380">$380</span>
-                        <button class="buy-now-btn" onclick="buyNow('Strawberry Bliss (1/2kg)', 380)">Buy Now</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('Strawberry Bliss (1/2kg)', 380)">Add to Cart</button>
                     </div>
                     <div class="cake-item">
                         <span>Strawberry Bliss (1kg)</span>
                         <span class="price" id="strawberry-bliss-1kg" data-price="750">$750</span>
-                        <button class="buy-now-btn" onclick="buyNow('Strawberry Bliss (1kg)', 750)">Buy Now</button>
+                        <button class="add-to-cart-btn" onclick="addToCart('Strawberry Bliss (1kg)', 750)">Add to Cart</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <button class="view-cart-btn" onclick="viewCart()">View Cart</button>
+
     <script>
-        // Function to handle the "Buy Now" button for each individual cake
-        function buyNow(cakeName, price) {
-            const quantity = parseInt(prompt(`Enter quantity for ${cakeName}:`, 0));
-            if (quantity > 0) {
-                const total = price * quantity;
-                alert(`${cakeName} - ${quantity} x $${price} = $${total}`);
+        // Function to add items to cart
+        function addToCart(cakeName, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let existingItem = cart.find(item => item.name === cakeName);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
             } else {
-                alert('Invalid quantity');
+                cart.push({ name: cakeName, price: price, quantity: 1 });
             }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(cakeName + " added to cart!");
+        }
+
+        // Function to view cart
+        function viewCart() {
+            window.location.href = "cart.html";
         }
     </script>
 </body>
