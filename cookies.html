@@ -69,6 +69,23 @@
             font-weight: bold;
             margin: 20px 0;
         }
+        .cart-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    margin-top: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cart-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
     </style>
     <script>
         const prices = [2.5, 3, 3.5, 4, 3, 2.5]; // Prices for each cookie
@@ -90,6 +107,23 @@
             const total = quantities.reduce((sum, qty, i) => sum + qty * prices[i], 0);
             document.getElementById('totalCost').textContent = `Total Cost: $${total.toFixed(2)}`;
         }
+
+        function addToCart(name, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(name + " added to cart! 🛍️");
+        }
+        function goToCart() {
+            window.location.href = "cart.html"; 
+        }
     </script>
 </head>
 <body>
@@ -97,58 +131,42 @@
         <div class="cookie">
             <img src="./projectimg/Peanut Butter Cookies.jpg" alt="Peanut butter cookies">
             <h2>Peanut Butter Cookies ($2.50)</h2>
-            <div class="controls">
-                <button onclick="updateQuantity('quantity1', 'subtract', 0)">-</button>
-                <span class="quantity" id="quantity1">0</span>
-                <button onclick="updateQuantity('quantity1', 'add', 0)">+</button>
-            </div>
+           
+            <button onclick="addToCart('Peanut Butter Cookies', 2.5)">🛒 Add to Cart</button>
         </div>
         <div class="cookie">
             <img src="./projectimg/Chocolate Chip Cookies.jpg" alt="Chocolate chip cookies">
             <h2>Chocolate Chip Cookies ($3.00)</h2>
-            <div class="controls">
-                <button onclick="updateQuantity('quantity2', 'subtract', 1)">-</button>
-                <span class="quantity" id="quantity2">0</span>
-                <button onclick="updateQuantity('quantity2', 'add', 1)">+</button>
-            </div>
+           
+            <button onclick="addToCart('Chocolate Chip Cookies', 3.0)">🛒 Add to Cart</button>
         </div>
         <div class="cookie">
             <img src="./projectimg/White Chocolate Macadamia Nut Cookies.jpg" alt="White chocolate macadamia nut cookies">
             <h2>White Chocolate Macadamia Nut Cookies ($3.50)</h2>
-            <div class="controls">
-                <button onclick="updateQuantity('quantity3', 'subtract', 2)">-</button>
-                <span class="quantity" id="quantity3">0</span>
-                <button onclick="updateQuantity('quantity3', 'add', 2)">+</button>
-            </div>
+          
+            <button onclick="addToCart('White Chocolate Macadamia Nut Cookies', 3.5)">🛒 Add to Cart</button>
         </div>
         <div class="cookie">
             <img src="./projectimg/Whoopie Pie.jpg" alt="Whoopie pie">
             <h2>Whoopie Pie ($4.00)</h2>
-            <div class="controls">
-                <button onclick="updateQuantity('quantity4', 'subtract', 3)">-</button>
-                <span class="quantity" id="quantity4">0</span>
-                <button onclick="updateQuantity('quantity4', 'add', 3)">+</button>
-            </div>
+            
+            <button onclick="addToCart('Whoopie Pie', 4.0)">🛒 Add to Cart</button>
         </div>
         <div class="cookie">
             <img src="./projectimg/Double Chocolate Chip Cookies.jpg" alt="Double chocolate chip cookies">
             <h2>Double Chocolate Chip Cookies ($3.00)</h2>
-            <div class="controls">
-                <button onclick="updateQuantity('quantity5', 'subtract', 4)">-</button>
-                <span class="quantity" id="quantity5">0</span>
-                <button onclick="updateQuantity('quantity5', 'add', 4)">+</button>
-            </div>
+           
+            <button onclick="addToCart('Double Chocolate Chip Cookies', 3.0)">🛒 Add to Cart</button>
         </div>
         <div class="cookie">
             <img src="./projectimg/Shortbread.jpg" alt="Shortbread cookies">
             <h2>Shortbread ($2.50)</h2>
-            <div class="controls">
-                <button onclick="updateQuantity('quantity6', 'subtract', 5)">-</button>
-                <span class="quantity" id="quantity6">0</span>
-                <button onclick="updateQuantity('quantity6', 'add', 5)">+</button>
-            </div>
+           
+            <button onclick="addToCart('Shortbread', 2.5)">🛒 Add to Cart</button>
         </div>
     </div>
-    <div class="total" id="totalCost">Total Cost: $0.00</div>
+    <button class="cart-btn" onclick="goToCart()">🛒 View Cart</button>
+
+
 </body>
 </html>
